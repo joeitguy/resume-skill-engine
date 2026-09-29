@@ -1,0 +1,36 @@
+Phase 1: Data Models & Backend API (The Foundation)
+Tech: Python, FastAPI, SQLite (or PostgreSQL)
+Brick 1: User & Static Data Models. Create the database tables to hold the user's static work history (Employers, Dates, Job Titles, Bullet points) and Education.
+Brick 2: The Skills Library Data Model. Create the table for skills. This needs specific boolean flags: is_explicit, is_inferred, and is_verified (which the user controls).
+Brick 3: CRUD Endpoints. Build the basic API routes so the frontend can Create, Read, Update, and Delete data in these tables.
+Phase 2: The LLM Processing Engine (The Brains)
+Tech: Python, OpenAI/Anthropic API
+Brick 1: Resume Ingestion Prompt. Write the Python function that takes a text dump of a resume, sends it to the LLM, and asks it to return a JSON array of Explicit and Inferred skills.
+Brick 2: Job Description (JD) Analyzer. Write the function that takes JD text, extracts requirements, and outputs its own Explicit/Inferred skills JSON.
+Brick 3: The Semantic Matcher & Weighter. The core algorithm. It takes the User's Verified Skills and the JD's requirements, asks the LLM to score matches from 1-5, and returns a sorted JSON array.
+Brick 4: Text Generators. The prompt templates that actually draft the Cover Letter and re-write the Resume Summary based on the weighted matches and tone parameters.
+Phase 3: The "Skills Sandbox" (Frontend - Critical Feature)
+Tech: React / Next.js, TailwindCSS
+Brick 1: App Layout. Set up the Next.js static sidebar (Dashboard, My Profile, My Skills, Job Applications).
+Brick 2: Resume Upload Component. A simple text area or file upload to send the master resume to the backend.
+Brick 3: The Skills Manager UI (The Must-Have).
+Build a dynamic list view populated by the AI's extraction (Phase 2, Brick 1).
+Features: Toggles/checkboxes next to every skill to Verify/Deselect. Badges showing if a skill was "Found" or "Inferred by AI".
+Include a manual text input to "Add Custom Skill" so the user always has ultimate control over their library.
+Phase 4: The Application Workflow (Frontend - The Magic)
+Tech: React / Next.js
+Brick 1: JD Input & Analysis Loading State. A screen to paste the job description, hit "Analyze", and display a cool loading skeleton while the AI does the matching.
+Brick 2: The Match Dashboard & Sliders.
+Display the "Match Score".
+Build the UI controls: Volume Slider (Top X skills), Strictness Slider (Temperature), and Tone Dropdown.
+Brick 3: Generation & Editing. A split-screen view. Once "Generate" is clicked, show the generated Cover Letter text in an editable text box so the user can make final human tweaks before downloading.
+Phase 5: Document Assembly & Export (The Output)
+Tech: Python (WeasyPrint or ReportLab) OR Frontend HTML-to-PDF
+Brick 1: The Resume Template Engine. Create a clean, ATS-friendly HTML/CSS resume template.
+Brick 2: Dynamic Injection. Write the script that injects the user's static work history, but loops the Top Matched Skills at the very top of the document.
+Brick 3: PDF Generation. Convert the HTML cover letter and HTML resume into polished, downloadable PDFs.
+How to Divide the Work (If you have a team)
+If you have 3 people, this is a perfect split:
+Dev 1 (Frontend): Takes Phases 3 and 4. Focuses entirely on the Next.js UI, the Skills Sandbox, and the slider experiences.
+Dev 2 (AI/Backend): Takes Phases 1 and 2. Focuses on FastAPI, database structure, and tuning the AI prompts to get perfect JSON responses.
+Dev 3 (Design/Output): Takes Phase 5. Focuses on making the HTML/CSS templates beautiful, ATS-compliant, and ensuring perfect PDF generation.

@@ -1,0 +1,39 @@
+Example App Concept 3 — “Vertical Sidebar + Workspace”
+This is more like a professional tool.
+
+Left Sidebar
+Four buttons stacked vertically:
+
+Resume Input
+
+Job Description
+
+Skill Matching
+
+Generate Documents
+
+Each button has a small icon:
+Document, magnifying glass, checklist, printer.
+
+Main Workspace
+When you click each sidebar item, the main area changes.
+
+Resume Input View:  
+A large text editor with syntax highlighting for sections (Experience, Skills, Education).
+
+Job Description View:  
+A similar editor with a “Highlight Keywords” toggle.
+
+Skill Matching View:  
+A split screen:
+Left: Resume skills
+Right: Job description skills
+Between them:
+A “Match Score” meter.
+
+Generate Documents View:  
+Two preview windows side‑by‑side:
+Resume preview
+Cover letter preview
+Below each:
+A “Download” button.
